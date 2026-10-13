@@ -126,6 +126,7 @@ export class OAuthClient {
       let expectedState: string;
       let codeVerifier: string;
 
+      const fixedPort = Number(process.env.ETSY_OAUTH_PORT ?? "3003");
       const server = createServer(
         (req: IncomingMessage, res: ServerResponse) => {
           const url = new URL(req.url!, `http://localhost`);
@@ -152,17 +153,18 @@ export class OAuthClient {
           res.end(
             "<html><body><h1>Authorization successful!</h1><p>You can close this window.</p></body></html>"
           );
+          // Port vor server.close() lesen, danach ist address() null
+          const callbackPort = (server.address() as any)?.port ?? fixedPort;
           server.close();
           resolve({
             code,
-            redirectUri: `http://localhost:${(server.address() as any).port}/callback`,
+            redirectUri: `http://localhost:${callbackPort}/callback`,
             codeVerifier,
           });
         }
       );
 
       // Etsy verlangt eine exakt registrierte Redirect-URL, daher fester Port
-      const fixedPort = Number(process.env.ETSY_OAUTH_PORT ?? "3003");
       server.listen(fixedPort, async () => {
         const port = (server.address() as any).port;
         const redirectUri = `http://localhost:${port}/callback`;
