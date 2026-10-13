@@ -161,7 +161,9 @@ export class OAuthClient {
         }
       );
 
-      server.listen(0, async () => {
+      // Etsy verlangt eine exakt registrierte Redirect-URL, daher fester Port
+      const fixedPort = Number(process.env.ETSY_OAUTH_PORT ?? "3003");
+      server.listen(fixedPort, async () => {
         const port = (server.address() as any).port;
         const redirectUri = `http://localhost:${port}/callback`;
         const authData = await this.buildAuthorizationUrl(redirectUri);

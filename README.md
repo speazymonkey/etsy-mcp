@@ -1,5 +1,9 @@
 # Etsy MCP Server
 
+> **Noblez-Fork:** Einrichtung für Lennox + Bruder steht in [SETUP-NOBLEZ.md](SETUP-NOBLEZ.md)
+> (`./install-noblez.sh`). Änderung gegenüber dem Original: fester OAuth-Port 3003
+> (`ETSY_OAUTH_PORT`), weil Etsy eine exakt registrierte Redirect-URL braucht.
+
 [![Tests](https://img.shields.io/github/actions/workflow/status/aserper/etsy-mcp/test.yml?style=for-the-badge&label=tests)](https://github.com/aserper/etsy-mcp/actions/workflows/test.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen?style=for-the-badge)](https://nodejs.org/)
