@@ -40,3 +40,9 @@ Tokens liegen danach in `~/.etsy-mcp/tokens.json` (nur eigener Benutzer lesbar).
 1. `get_shop_receipts` (offene Bestellungen) → Adresse/Artikel lesen
 2. Label erstellen (Shopify Shipping / easyDHL / DHL-Portal, siehe Skill `versandlabel`)
 3. `create_shipment` mit Sendungsnummer + Carrier `dhl` → Etsy markiert als verschickt
+
+## Nachrichten der Kunden
+
+Die Etsy-API (v3) hat keine Funktion, um Kundennachrichten zu lesen oder zu senden. Zwei Wege:
+Claude in Chrome liest etsy.com/messages im eingeloggten Browser, oder Etsys Benachrichtigungs-Mails
+werden über Gmail gelesen. Anleitung für den Bruder: [SETUP-BRUDER.md](SETUP-BRUDER.md).
